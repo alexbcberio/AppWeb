@@ -28,8 +28,8 @@
                 <td></td>
                 <td>
                     <asp:Button ID="Button1" runat="server" Text="Login" ValidationGroup="abc" />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/CambiarPassword.aspx">Modificar Contraseña  </asp:HyperLink>
+                &nbsp;&nbsp;<asp:HyperLink ID="register" runat="server" NavigateUrl="~/Registro.aspx">Registro</asp:HyperLink>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/CambiarPassword.aspx">Modificar Contraseña  </asp:HyperLink>
                 </td>
             </tr>
         </table>

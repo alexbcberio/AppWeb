@@ -132,13 +132,13 @@ namespace web
         protected global::System.Web.UI.WebControls.CompareValidator CompareValidator1;
 
         /// <summary>
-        /// Control radioButton.
+        /// Control rol.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList radioButton;
+        protected global::System.Web.UI.WebControls.RadioButtonList rol;
 
         /// <summary>
         /// Control RequiredFieldValidator6.

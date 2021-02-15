@@ -54,11 +54,11 @@
                 <tr>
                     <td>Rol</td>
                     <td>
-                        <asp:RadioButtonList ID="radioButton" runat="server">
+                        <asp:RadioButtonList ID="rol" runat="server">
                             <asp:ListItem Selected="True">Alumno</asp:ListItem>
                             <asp:ListItem>Profesor</asp:ListItem>
                         </asp:RadioButtonList>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="radioButton" ErrorMessage="Campo Obligatorio*" ForeColor="Red" ValidationGroup="abc"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="rol" ErrorMessage="Campo Obligatorio*" ForeColor="Red" ValidationGroup="abc"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>

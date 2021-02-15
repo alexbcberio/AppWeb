@@ -71,6 +71,7 @@
     <Content Include="Inicio.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="CambiarPassword.aspx" />
+    <Content Include="Confirmar.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,6 +96,13 @@
     <Compile Include="CambiarPassword.aspx.designer.cs">
       <DependentUpon>CambiarPassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Confirmar.aspx.cs">
+      <DependentUpon>Confirmar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Confirmar.aspx.designer.cs">
+      <DependentUpon>Confirmar.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -104,6 +112,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\sqlServerDb\sqlServerDb.csproj">
+      <Project>{a483773e-bc23-41d0-bdc9-5e88325ca547}</Project>
+      <Name>sqlServerDb</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

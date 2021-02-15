@@ -1,17 +1,67 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using sqlServerDb;
+using System.Net;
+using System.Net.Mail;
 
 namespace web
 {
-    public partial class WebForm2 : System.Web.UI.Page
+    public partial class WebForm2 : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Page.IsPostBack)
+            {
+                string email = Request.Form.Get("email");
+                string name = Request.Form.Get("nombre");
+                string surnames = Request.Form.Get("apellidos");
+                string password = Request.Form.Get("password");
+                string rol = Request.Form.Get("rol").ToLower();
 
+                Random rnd = new Random();
+                int confirmNumber = rnd.Next(10^5, 2147483647);
+
+                string sql = $"insert into usuarios" +
+                    $"(email, nombre, apellidos, numconfir, confirmado, tipo, pass) values" +
+                    $"('{email}', '{name}', '{surnames}', {confirmNumber}, 0, '{rol}', '{password}');";
+                
+                Connection con = new Connection();
+                
+                int res = con.ExecuteNonQuery(sql);
+                
+                con.Close();
+
+                if (res == 1)
+                {
+                    string protocol = Request.ServerVariables["HTTPS"].ToLower() == "on" ? "https" : "http";
+                    string server = Request.ServerVariables["SERVER_NAME"];
+                    string port = Request.ServerVariables["SERVER_PORT"];
+
+                    string url = $"{protocol}://{server}:{port}/Confirmar.aspx?email={email}&confirmationCode={confirmNumber}&method=email";
+                    string body = $"<h1>Gracias por registrarte</h1><p>Pulsa <a href='{url}'>aquí</a> para activar tu cuenta.</p>" +
+                        $"<p>¿Prefieres copiar el enlace a mano? Aquí lo tienes <a href='{url}'>{url}</a></p><hr>" +
+                        $"<p style='text-align:center;font-size:.75rem;'>Este mensaje se ha enviado de forma automática</p>";
+
+                    string subject = "Confirmar cuenta";
+
+                    sendMail(email, subject, body);
+
+                    Response.Redirect("Inicio.aspx");
+                }
+            }
+        }
+
+        private void sendMail(string to, string subject, string htmlBody)
+        {
+            SmtpClient smtp = new SmtpClient();
+
+            MailMessage msg = new MailMessage();
+            msg.To.Add(to);
+            msg.Subject = subject;
+            msg.IsBodyHtml = true;
+            msg.Body = htmlBody;
+
+            smtp.Send(msg);
         }
     }
 }
