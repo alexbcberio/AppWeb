@@ -4,39 +4,38 @@ Este proyecto forma parte de la asignatura "Herramientas Avanzadas de Desarrollo
 
 ## Configuración
 
-Antes de poder utilizar la aplicación se require cambiar cierta configuración.
+Antes de poder utilizar la aplicación se require cambiar cierta configuración. Primero de todo tienes que hacer una copia del archivo `web/Web.config.example` y llamarla `Web.config`, una vez hecha la copia tienes que hacer los siguientes cambios.
 
 ### Base de Datos
 
-Debes introducir la "connection string" de la base de datos MsSQL en el archivo ubicado `sqlServerDb/Connection.cs`. Se muestra a continuación el apartado del código correspondiente, reemplazar `CONNECTION_STRING`.
+Debes remplazar `CONNECTION_STRING` por la "connection string" de la base de datos SQLserver.
 
-```cs
-public Connection()
-{
-    string connectionString = "CONNECTION_STRING";
-    connected = false;
-    connection = new SqlConnection(connectionString);
-}
+```xml
+<connectionStrings>
+  <add
+    name="sqlserver"
+    connectionString="CONNECTION_STRING"/>
+</connectionStrings>
 ```
 
 ### Servidor SMTP de correos salientes
 
-Para poder enviar correos durante el registro del usuario. La configuración de este se encuentra en `web/Web.config`.
+Esta configuración consiste en varios parámetros, a continuación se explican cada uno de los valores que deben tomar cada uno de ellos.
 
-* `SEND_FROM`: dirección de correo saliente, ej. `noreply@domain.tld`
-* `SMTP_SERVER`: dirección smtp del servidor, ej. `smtp.domain.tld`
-* `MAIL_USER`: nombre de usuario para la autenticación.
-* `MAIL_PASS`: contraseña para autenticación del usuario.
+* `FROM_ADDRESS`: dirección de correo saliente, ej. `noreply@domain.tld`
+* `SMTP_HOST`: dirección smtp del servidor, ej. `smtp.domain.tld`
+* `AUTH_USER`: nombre de usuario para la autenticación.
+* `AUTH_PASS`: contraseña para autenticación del usuario.
 
 ```xml
 <mailSettings>
-  <smtp from="SEND_FROM">
+  <smtp from="FROM_ADDRESS">
     <network
-      host="SMTP_SERVER"
+      host="SMTP_HOST"
       port="587"
-      userName="MAIL_USER"
-      password="MAIL_USER_PASS"
-      enableSsl="true" />
+      userName="AUTH_USER"
+      password="AUTH_PASS"
+      enableSsl="true"/>
   </smtp>
 </mailSettings>
 ```

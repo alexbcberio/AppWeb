@@ -5,6 +5,23 @@
   https://go.microsoft.com/fwlink/?LinkId=169433
   -->
 <configuration>
+  <system.net>
+    <mailSettings>
+      <smtp from="FROM_ADDRESS">
+        <network
+          host="SMTP_HOST"
+          port="587"
+          userName="AUTH_USER"
+          password="AUTH_PASS"
+          enableSsl="true"/>
+      </smtp>
+    </mailSettings>
+  </system.net>
+  <connectionStrings>
+    <add
+      name="sqlserver"
+      connectionString="CONNECTION_STRING"/>
+  </connectionStrings>
   <system.web>
     <compilation debug="true" targetFramework="4.6.1"/>
     <httpRuntime targetFramework="4.6.1"/>
@@ -22,17 +39,4 @@
   <appSettings>
     <add key="ValidationSettings:UnobtrusiveValidationMode" value="None" />
   </appSettings>
-  <system.net>
-    <mailSettings>
-      <smtp from="noreply@ehu.eus">
-        <network
-          host="smtp.ehu.eus"
-          port="587"
-          userName="LDAP"
-          password="LDAP_PASS"
-          enableSsl="true"/>
-      </smtp>
-    </mailSettings>
-  </system.net>
-
 </configuration>

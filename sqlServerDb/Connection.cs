@@ -8,9 +8,8 @@ namespace sqlServerDb
         private bool connected;
         private SqlConnection connection;
 
-        public Connection()
+        public Connection(string connectionString)
         {
-            string connectionString = "CONNECTION_STRING";
             connected = false;
             connection = new SqlConnection(connectionString);
         }
