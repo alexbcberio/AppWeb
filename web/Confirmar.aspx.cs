@@ -28,7 +28,7 @@ namespace web
             }
 
             string sql = $"update usuarios set " +
-                $"confirmado = 1, numconfir = 0" +
+                $"confirmado = 1, numconfir = 0 " +
                 $"where email = '{email}' and numconfir = {confirmNumber} and confirmado = 0;";
 
             Connection con = new Connection((string) Application.Get("connectionString"));
