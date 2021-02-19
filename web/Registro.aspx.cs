@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Web.UI;
 using sqlServerDb;
-using System.Net;
-using System.Net.Mail;
 
 namespace web
 {
@@ -44,24 +42,11 @@ namespace web
 
                     string subject = "Confirmar cuenta";
 
-                    sendMail(email, subject, body);
+                    MailClient.sendMail(email, subject, body);
 
                     Response.Redirect("Inicio.aspx");
                 }
             }
-        }
-
-        private void sendMail(string to, string subject, string htmlBody)
-        {
-            SmtpClient smtp = new SmtpClient();
-
-            MailMessage msg = new MailMessage();
-            msg.To.Add(to);
-            msg.Subject = subject;
-            msg.IsBodyHtml = true;
-            msg.Body = htmlBody;
-
-            smtp.Send(msg);
         }
     }
 }
