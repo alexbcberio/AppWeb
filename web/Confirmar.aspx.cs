@@ -12,9 +12,8 @@ namespace web
 
             if (email == null)
             {
-                // realizamos el redirect desde el lado del servidor, Response.Redirect se
-                // gestiona desde el navegador y es mas costoso para el servidor.
                 Response.StatusCode = 400;
+                errorMsg.Text = "Error: combinación de email y código de confirmación erróneos.";
                 return;
             }
             
@@ -24,6 +23,7 @@ namespace web
             } catch (Exception err)
             {
                 Response.StatusCode = 400;
+                errorMsg.Text = "Error: combinación de email y código de confirmación erróneos.";
                 return;
             }
 
@@ -38,6 +38,7 @@ namespace web
             if (res == 0)
             {
                 Response.StatusCode = 400;
+                errorMsg.Text = "Error: combinación de email y código de confirmación erróneos.";
                 return;
             }
 

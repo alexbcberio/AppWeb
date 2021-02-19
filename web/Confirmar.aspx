@@ -10,6 +10,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
+
+            <asp:Label ID="errorMsg" runat="server" Text="¡Cuenta activada con éxito!" />
+
         </div>
     </form>
 </body>
