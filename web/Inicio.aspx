@@ -27,9 +27,10 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:Button ID="Button1" runat="server" Text="Login" ValidationGroup="abc" />
+                    <asp:Button ID="loginBtn" runat="server" Text="Login" ValidationGroup="abc" OnClick="loginBtn_Click" />
                 &nbsp;&nbsp;<asp:HyperLink ID="register" runat="server" NavigateUrl="~/Registro.aspx">Registro</asp:HyperLink>
                     &nbsp;&nbsp;&nbsp;&nbsp;<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/CambiarPassword.aspx">Modificar Contraseña  </asp:HyperLink>
+                    <asp:Label ID="loginInfo" runat="server"></asp:Label>
                 </td>
             </tr>
         </table>
