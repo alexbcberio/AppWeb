@@ -88,6 +88,7 @@
             <asp:Button ID="change" runat="server" Text="Cambiar contraseña" OnClick="change_Click" />
         <asp:Label ID="changeError" runat="server" EnableViewState="False" ForeColor="Red"></asp:Label>
         <asp:Label ID="changeOk" runat="server" EnableViewState="False"></asp:Label>
+        <asp:HyperLink ID="homeLink" runat="server" EnableViewState="False" NavigateUrl="~/Inicio.aspx" Visible="False">Volver al inicio</asp:HyperLink>
         </form>
     </body>
 </html>

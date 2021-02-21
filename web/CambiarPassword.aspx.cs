@@ -92,6 +92,7 @@ namespace web
 
             email2.Text = "";
             passchangeCode.Text = "";
+            homeLink.Visible = true;
             con.Close();
         }
     }
