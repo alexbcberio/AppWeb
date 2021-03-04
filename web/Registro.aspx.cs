@@ -23,7 +23,7 @@ namespace web
                     $"(email, nombre, apellidos, numconfir, confirmado, tipo, pass) values" +
                     $"('{email}', '{name}', '{surnames}', {confirmNumber}, 0, '{rol}', '{password}');";
                 
-                Connection con = new Connection((string)Application.Get("connectionString"));
+                Connection con = new Connection();
                 
                 int res = con.ExecuteNonQuery(sql);
                 

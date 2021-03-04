@@ -5,13 +5,22 @@ namespace SqlServerDb
 {
     public class Connection
     {
+        private static string _connectionString;
         private bool connected;
         private SqlConnection connection;
 
-        public Connection(string connectionString)
+        /*
+         * connectionString setter
+         */
+        public static string ConnectionString
+        {
+            set { _connectionString = value; }
+        }
+
+        public Connection()
         {
             connected = false;
-            connection = new SqlConnection(connectionString);
+            connection = new SqlConnection(_connectionString);
         }
 
         /*

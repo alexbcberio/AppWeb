@@ -15,7 +15,7 @@ namespace web
         protected void loginBtn_Click(object sender, EventArgs e)
         {
             bool success = false;
-            Connection con = new Connection((string)Application.Get("connectionString"));
+            Connection con = new Connection();
 
             string sql = $"select pass from usuarios where email = '{userEmail.Text}';";
             SqlDataReader r = con.ExecuteReader(sql);

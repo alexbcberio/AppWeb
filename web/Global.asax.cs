@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using SqlServerDb;
 
 namespace web
 {
@@ -8,9 +9,7 @@ namespace web
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["sqlServer"].ConnectionString;
-
-            Application.Set("connectionString", connectionString);
+            Connection.ConnectionString = ConfigurationManager.ConnectionStrings["sqlServer"].ConnectionString;
         }
 
         protected void Session_Start(object sender, EventArgs e)

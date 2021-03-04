@@ -26,7 +26,7 @@ namespace web
 
         protected void requestChange_Click(object sender, EventArgs e)
         {
-            Connection con = new Connection((string)Application.Get("connectionString"));
+            Connection con = new Connection();
             
             string mail = email.Text;
             string sql = $"select count(*) from Usuarios where email = '{mail}';";
@@ -76,7 +76,7 @@ namespace web
 
         protected void change_Click(object sender, EventArgs e)
         {
-            Connection con = new Connection((string)Application.Get("connectionString"));
+            Connection con = new Connection();
             string sql = $"update usuarios set pass = '{password.Text}', codpass = null where email = '{email2.Text}' and codpass = {passchangeCode.Text};";
 
             int updateDb = con.ExecuteNonQuery(sql);
