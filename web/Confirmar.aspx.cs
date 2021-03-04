@@ -1,5 +1,5 @@
 ﻿using System;
-using sqlServerDb;
+using SqlServerDb;
 
 namespace web
 {

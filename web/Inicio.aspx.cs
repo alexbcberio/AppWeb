@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Data.SqlClient;
-using sqlServerDb;
+using SqlServerDb;
 
 namespace web
 {

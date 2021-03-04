@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web", "web\web.csproj", "{05293D06-C2B9-47C8-9E0E-883372875549}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sqlServerDb", "sqlServerDb\sqlServerDb.csproj", "{A483773E-BC23-41D0-BDC9-5E88325CA547}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServerDb", "sqlServerDb\SqlServerDb.csproj", "{A483773E-BC23-41D0-BDC9-5E88325CA547}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

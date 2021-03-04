@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.UI;
-using sqlServerDb;
+using SqlServerDb;
 
 namespace web
 {

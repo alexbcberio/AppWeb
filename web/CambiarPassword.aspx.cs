@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
-using sqlServerDb;
+using SqlServerDb;
 
 namespace web
 {

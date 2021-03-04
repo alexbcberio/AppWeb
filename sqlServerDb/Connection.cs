@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 
-namespace sqlServerDb
+namespace SqlServerDb
 {
     public class Connection
     {
