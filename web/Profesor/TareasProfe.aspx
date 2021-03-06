@@ -27,14 +27,14 @@
                 </tr>
 
                 <tr>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=tcp:hads21-16.database.windows.net,1433;Initial Catalog=hads21-16;Persist Security Info=True;User ID=mhayat001@ehu.eus@hads21-16;Password=Iamjcjmqjhjcq@" 
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="connection" 
                         SelectCommand="SELECT [Asignaturas].[codigo] FROM ([Asignaturas] INNER JOIN [GruposClase] ON [Asignaturas].[codigo]=[GruposClase].[codigoasig]) INNER JOIN [ProfesoresGrupo] ON [ProfesoresGrupo].[codigogrupo]=[GruposClase].[codigo] WHERE ([ProfesoresGrupo].[email] = @email)" ProviderName="System.Data.SqlClient">
                         <SelectParameters>
                             <asp:SessionParameter Name="email" SessionField="email" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource>
                     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-                        ConnectionString="Data Source=tcp:hads21-16.database.windows.net,1433;Initial Catalog=hads21-16;Persist Security Info=True;User ID=mhayat001@ehu.eus@hads21-16;Password=Iamjcjmqjhjcq@" 
+                        ConnectionString="connection string" 
                         SelectCommand="SELECT * FROM [TareasGenericas] WHERE ([CodAsig] = @CodAsig)" 
                         DeleteCommand="DELETE FROM [TareasGenericas] WHERE [Codigo] = @Codigo"
                         InsertCommand="INSERT INTO [TareasGenericas] ([Codigo], [Descripcion], [CodAsig], [HEstimadas], [Explotacion], [TipoTarea]) VALUES (@Codigo, @Descripcion, @CodAsig, @HEstimadas, @Explotacion, @TipoTarea)" 
