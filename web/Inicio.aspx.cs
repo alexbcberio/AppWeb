@@ -16,6 +16,7 @@ namespace web
         {
             bool success = false;
             Connection con = new Connection();
+            String tipo="";
 
             //string sql = $"select pass from usuarios where email = '{userEmail.Text}';";
             //SqlDataReader r = con.ExecuteReader(sql);
@@ -25,17 +26,26 @@ namespace web
             if (r.Read())
             {
                 string pass = r.GetString(0);
+                r.Close();
+                tipo = con.getTipo(userEmail.Text);
 
                 success = pass == userpass.Text;
-            }
 
-            r.Close();
+
+            }
+            else { r.Close(); }
+
+            
             con.Close();
 
             if (success)
             {
                 Session.Add("logged", true);
                 Session.Add("email", userEmail.Text);
+                Session.Add("tipo", tipo);
+
+                if (tipo.Equals("Profesor")) { Response.Redirect("Profesor/Profesor.aspx"); }
+                else { Response.Redirect("Alumno/Alumno.aspx"); }
 
                 loginInfo.Text = "¡Sesión iniciada!";
                 loginInfo.ForeColor = Color.Green;

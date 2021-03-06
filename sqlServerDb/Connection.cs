@@ -157,7 +157,24 @@ namespace SqlServerDb
             return r;
 
         }
+        /*
+      * Return tipo of a given email
+      */
+        public String getTipo(string email)
+        {
+            String sql = $"select tipo from Usuarios where email='" + email + "';";
 
+            String tipo = "";
+            SqlDataReader r = ExecuteReader(sql);
+            if (r.Read()) {
+                 tipo = r.GetString(0);
+                r.Close();
+            }
+            
+
+            return tipo;
+
+        }
 
 
 
