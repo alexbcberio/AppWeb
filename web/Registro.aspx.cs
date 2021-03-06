@@ -19,13 +19,13 @@ namespace web
                 Random rnd = new Random();
                 int confirmNumber = rnd.Next(10^5, 2147483647);
 
-                string sql = $"insert into usuarios" +
-                    $"(email, nombre, apellidos, numconfir, confirmado, tipo, pass) values" +
-                    $"('{email}', '{name}', '{surnames}', {confirmNumber}, 0, '{rol}', '{password}');";
+               // string sql = $"insert into usuarios" +
+               // $"(email, nombre, apellidos, numconfir, confirmado, tipo, pass) values" +
+               //    $"('{email}', '{name}', '{surnames}', {confirmNumber}, 0, '{rol}', '{password}');";
                 
                 Connection con = new Connection();
-                
-                int res = con.ExecuteNonQuery(sql);
+
+                int res = con.Register(email,name,surnames,confirmNumber,rol,password);
                 
                 con.Close();
 

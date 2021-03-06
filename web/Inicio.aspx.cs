@@ -17,8 +17,10 @@ namespace web
             bool success = false;
             Connection con = new Connection();
 
-            string sql = $"select pass from usuarios where email = '{userEmail.Text}';";
-            SqlDataReader r = con.ExecuteReader(sql);
+            //string sql = $"select pass from usuarios where email = '{userEmail.Text}';";
+            //SqlDataReader r = con.ExecuteReader(sql);
+            SqlDataReader r = con.Login(userEmail.Text);
+
 
             if (r.Read())
             {

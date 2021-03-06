@@ -29,9 +29,9 @@ namespace web
             Connection con = new Connection();
             
             string mail = email.Text;
-            string sql = $"select count(*) from Usuarios where email = '{mail}';";
+           // string sql = $"select count(*) from Usuarios where email = '{mail}';";
 
-            int exists = (int)con.ExecuteScalar(sql);
+            int exists = con.emailExsist(mail);
 
             if (exists == 0)
             {
@@ -44,8 +44,8 @@ namespace web
             Random rnd = new Random();
             int confirmCode = rnd.Next(10 ^ 5, 2147483647);
 
-            sql = $"update usuarios set codpass = {confirmCode} where email = '{mail}';";
-            int dbUpdated = con.ExecuteNonQuery(sql);
+           // sql = $"update usuarios set codpass = {confirmCode} where email = '{mail}';";
+            int dbUpdated = con.setCodePass(mail,confirmCode);
 
             if (dbUpdated == 0)
             {
@@ -77,9 +77,9 @@ namespace web
         protected void change_Click(object sender, EventArgs e)
         {
             Connection con = new Connection();
-            string sql = $"update usuarios set pass = '{password.Text}', codpass = null where email = '{email2.Text}' and codpass = {passchangeCode.Text};";
+            //string sql = $"update usuarios set pass = '{password.Text}', codpass = null where email = '{email2.Text}' and codpass = {passchangeCode.Text};";
 
-            int updateDb = con.ExecuteNonQuery(sql);
+            int updateDb = con.UpdatePassword(email2.Text, passchangeCode.Text, password.Text);
 
             if (updateDb < 1)
             {

@@ -27,12 +27,12 @@ namespace web
                 return;
             }
 
-            string sql = $"update usuarios set " +
-                $"confirmado = 1, numconfir = 0 " +
-                $"where email = '{email}' and numconfir = {confirmNumber} and confirmado = 0;";
+           // string sql = $"update usuarios set " +
+           //     $"confirmado = 1, numconfir = 0 " +
+           //     $"where email = '{email}' and numconfir = {confirmNumber} and confirmado = 0;";
 
             Connection con = new Connection();
-            int res = con.ExecuteNonQuery(sql);
+            int res = con.UpdateUserStatus(email,confirmNumber);
             con.Close();
 
             if (res == 0)
