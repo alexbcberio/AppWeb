@@ -7,7 +7,7 @@ namespace SqlServerDb
     {
         private static string _connectionString;
         private bool connected;
-        private SqlConnection connection;
+        protected SqlConnection connection;
 
         /*
          * connectionString setter
@@ -181,7 +181,7 @@ namespace SqlServerDb
         /*
          * Opens a connection if its not already connected and creates a SqlCommand.
          */
-        private SqlCommand createCommand(string query)
+        protected SqlCommand createCommand(string query)
         {
             if (!connected)
             {
