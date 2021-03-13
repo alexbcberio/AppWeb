@@ -9,7 +9,8 @@ namespace web
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            Connection.ConnectionString = ConfigurationManager.ConnectionStrings["sqlServer"].ConnectionString;
+            Application.Set("connectionString", ConfigurationManager.ConnectionStrings["sqlServer"].ConnectionString);
+            Connection.ConnectionString = (string) Application.Get("connectionString");
         }
 
         protected void Session_Start(object sender, EventArgs e)
