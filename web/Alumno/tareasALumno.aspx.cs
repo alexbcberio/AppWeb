@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using SqlServerDb;
+using System.Data.SqlClient;
 
 namespace web.Alumno
 {
@@ -25,9 +26,14 @@ namespace web.Alumno
         {
             Student s = new Student();
 
-            DataSet subjects = s.GetStudentSubjects(sessionMail());
+            SqlCommand subjects = s.GetStudentSubjects(sessionMail());
 
-            codasig.DataSource = subjects;
+            SqlDataAdapter da = new SqlDataAdapter(subjects);
+            DataSet ds = new DataSet();
+
+            da.Fill(ds);
+
+            codasig.DataSource = ds;
             codasig.DataTextField = "codigoasig";
             codasig.DataBind();
         }
@@ -36,9 +42,14 @@ namespace web.Alumno
         {
             Student s = new Student();
 
-            DataSet tasks = s.GetStudentTasks(sessionMail(), codasig.SelectedValue);
+            SqlCommand tasks = s.GetStudentTasks(sessionMail(), codasig.SelectedValue);
 
-            tasksGrid.DataSource = tasks;
+            SqlDataAdapter da = new SqlDataAdapter(tasks);
+            DataSet ds = new DataSet();
+
+            da.Fill(ds);
+
+            tasksGrid.DataSource = ds;
             tasksGrid.DataBind();
         }
 
