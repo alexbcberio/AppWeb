@@ -72,7 +72,7 @@
                     <td class="auto-style1">
                         <asp:Button ID="añadir" runat="server" Text="Añadir Tarea" OnClick="añadir_Click" />
                         <br />
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:hads21-16ConnectionString %>" 
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlserver %>" 
                         SelectCommand="SELECT [Asignaturas].[codigo] FROM ([Asignaturas] INNER JOIN [GruposClase] ON [Asignaturas].[codigo]=[GruposClase].[codigoasig]) INNER JOIN [ProfesoresGrupo] ON [ProfesoresGrupo].[codigogrupo]=[GruposClase].[codigo] WHERE ([ProfesoresGrupo].[email] = @email)">
                         <SelectParameters>
                             <asp:SessionParameter Name="email" SessionField="email" Type="String" />

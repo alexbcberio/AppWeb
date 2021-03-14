@@ -31,9 +31,9 @@
             </chartareas>
         </asp:Chart>
             <div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:hads21-16ConnectionString2 %>" SelectCommand="SELECT [Descripción], AVG([HReales]), AVG(HEstimadas) FROM [TareasPersonales] WHERE ([Email] = @email) GROUP BY [Descripción]
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlserver %>" SelectCommand="SELECT [Descripción], AVG([HReales]), AVG(HEstimadas) FROM [TareasPersonales] WHERE ([Email] = @email) GROUP BY [Descripción]
 
-" ProviderName="<%$ ConnectionStrings:hads21-16ConnectionString2.ProviderName %>">
+" ProviderName="<%$ ConnectionStrings:sqlserver.ProviderName %>">
             <SelectParameters>
                 <asp:ControlParameter ControlID="DropDownList1" DefaultValue="" Name="email" PropertyName="SelectedValue" />
             </SelectParameters>
@@ -41,7 +41,7 @@
     </div>
 
              <div>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:hads21-16ConnectionString %>" SelectCommand="SELECT distinct[Email] FROM [TareasPersonales] "></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:sqlserver %>" SelectCommand="SELECT distinct[Email] FROM [TareasPersonales] "></asp:SqlDataSource>
     </div>
         </div>
         <p>

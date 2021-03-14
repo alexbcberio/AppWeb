@@ -27,14 +27,14 @@
                 </tr>
 
                 <tr>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:hads21-16ConnectionString %>"
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlserver %>"
                         SelectCommand="SELECT [Asignaturas].[codigo] FROM ([Asignaturas] INNER JOIN [GruposClase] ON [Asignaturas].[codigo]=[GruposClase].[codigoasig]) INNER JOIN [ProfesoresGrupo] ON [ProfesoresGrupo].[codigogrupo]=[GruposClase].[codigo] WHERE ([ProfesoresGrupo].[email] = @email)" OnSelecting="SqlDataSource1_Selecting">
                         <SelectParameters>
                             <asp:SessionParameter Name="email" SessionField="email" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource>
                     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:hads21-16ConnectionString %>" 
+                        ConnectionString="<%$ ConnectionStrings:sqlserver %>" 
                         SelectCommand="SELECT * FROM [TareasGenericas] WHERE ([CodAsig] = @CodAsig)" 
                         DeleteCommand="DELETE FROM [TareasGenericas] WHERE [Codigo] = @Codigo"
                         InsertCommand="INSERT INTO [TareasGenericas] ([Codigo], [Descripcion], [CodAsig], [HEstimadas], [Explotacion], [TipoTarea]) VALUES (@Codigo, @Descripcion, @CodAsig, @HEstimadas, @Explotacion, @TipoTarea)" 
