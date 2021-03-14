@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace SqlServerDb
@@ -162,10 +163,13 @@ namespace SqlServerDb
       */
         public String getTipo(string email)
         {
-            String sql = $"select tipo from Usuarios where email='" + email + "';";
+            //String sql = $"select tipo from Usuarios where email='" + email + "';";
 
             String tipo = "";
-            SqlDataReader r = ExecuteReader(sql);
+            SqlCommand com = new SqlCommand("getTipo",connection);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("email",new SqlParameter()).Value=email;
+            SqlDataReader r = com.ExecuteReader();
             if (r.Read()) {
                  tipo = r.GetString(0);
                 r.Close();
@@ -174,6 +178,14 @@ namespace SqlServerDb
 
             return tipo;
 
+        }
+        /*
+      * Return sQL aDATPTER OF tAREAS gENERICAS
+      */
+        public SqlDataAdapter getTareasGenericas()
+        {
+            SqlDataAdapter da = new SqlDataAdapter("select * from TareasGenericas", connection);
+            return da;
         }
 
 

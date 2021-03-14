@@ -27,19 +27,18 @@
                 </tr>
 
                 <tr>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="connection" 
-                        SelectCommand="SELECT [Asignaturas].[codigo] FROM ([Asignaturas] INNER JOIN [GruposClase] ON [Asignaturas].[codigo]=[GruposClase].[codigoasig]) INNER JOIN [ProfesoresGrupo] ON [ProfesoresGrupo].[codigogrupo]=[GruposClase].[codigo] WHERE ([ProfesoresGrupo].[email] = @email)" ProviderName="System.Data.SqlClient">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:hads21-16ConnectionString %>"
+                        SelectCommand="SELECT [Asignaturas].[codigo] FROM ([Asignaturas] INNER JOIN [GruposClase] ON [Asignaturas].[codigo]=[GruposClase].[codigoasig]) INNER JOIN [ProfesoresGrupo] ON [ProfesoresGrupo].[codigogrupo]=[GruposClase].[codigo] WHERE ([ProfesoresGrupo].[email] = @email)" OnSelecting="SqlDataSource1_Selecting">
                         <SelectParameters>
                             <asp:SessionParameter Name="email" SessionField="email" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource>
                     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-                        ConnectionString="connection string" 
+                        ConnectionString="<%$ ConnectionStrings:hads21-16ConnectionString %>" 
                         SelectCommand="SELECT * FROM [TareasGenericas] WHERE ([CodAsig] = @CodAsig)" 
                         DeleteCommand="DELETE FROM [TareasGenericas] WHERE [Codigo] = @Codigo"
                         InsertCommand="INSERT INTO [TareasGenericas] ([Codigo], [Descripcion], [CodAsig], [HEstimadas], [Explotacion], [TipoTarea]) VALUES (@Codigo, @Descripcion, @CodAsig, @HEstimadas, @Explotacion, @TipoTarea)" 
-                        UpdateCommand="UPDATE [TareasGenericas] SET [Descripcion] = @Descripcion, [CodAsig] = @CodAsig, [HEstimadas] = @HEstimadas, [Explotacion] = @Explotacion, [TipoTarea] = @TipoTarea WHERE [Codigo] = @Codigo"
-                        ProviderName="System.Data.SqlClient">
+                        UpdateCommand="UPDATE [TareasGenericas] SET [Descripcion] = @Descripcion, [CodAsig] = @CodAsig, [HEstimadas] = @HEstimadas, [Explotacion] = @Explotacion, [TipoTarea] = @TipoTarea WHERE [Codigo] = @Codigo">
                         <DeleteParameters>
                             <asp:Parameter Name="Codigo" Type="String" />
                         </DeleteParameters>

@@ -22,7 +22,9 @@
                 <td class="auto-style2">
                     <asp:HyperLink ID="tareas_profe" runat="server" BackColor="Yellow" BorderColor="#FF9999" BorderWidth="5px" NavigateUrl="~/Profesor/TareasProfe.aspx">Tareas</asp:HyperLink>
                 </td>
-                <td>&nbsp;</td>
+                <td>
+                    <asp:HyperLink ID="tareas_profe0" runat="server" BackColor="Yellow" BorderColor="#FF9999" BorderWidth="5px" NavigateUrl="~/Profesor/estadic.aspx">Estadicticas</asp:HyperLink>
+                </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>

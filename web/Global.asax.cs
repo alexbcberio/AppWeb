@@ -11,6 +11,7 @@ namespace web
         {
             Application.Set("connectionString", ConfigurationManager.ConnectionStrings["sqlServer"].ConnectionString);
             Connection.ConnectionString = (string) Application.Get("connectionString");
+            
         }
 
         protected void Session_Start(object sender, EventArgs e)
