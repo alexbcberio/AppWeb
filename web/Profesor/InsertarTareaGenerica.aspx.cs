@@ -33,19 +33,27 @@ namespace web.Profesor
 
         protected void añadir_Click(object sender, EventArgs e)
         {
-
-            DataRow dr = dt.NewRow();
-            dr["Codigo"] = codigo.Text.ToString();
-            dr["Descripcion"] = desc.Text.ToString();
-            dr["CodAsig"] = asig.Text.ToString();
-            dr["HEstimadas"] = horas.Text.ToString();
-            dr["Explotacion"] = false;
-            dr["TipoTarea"] = tipo.Text.ToString();
-            dt.Rows.Add(dr);
-            da.UpdateCommand = cb.GetUpdateCommand();
-            da.Update(ds, "TareasGenericas");
-            da.Update(dt);
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('¡Tarea añadida con éxito!')", true);
+            Connection con = new Connection();
+            if (!con.repeatedTarea(codigo.Text.ToString()))
+            {
+                DataRow dr = dt.NewRow();
+                dr["Codigo"] = codigo.Text.ToString();
+                dr["Descripcion"] = desc.Text.ToString();
+                dr["CodAsig"] = asig.Text.ToString();
+                dr["HEstimadas"] = horas.Text.ToString();
+                dr["Explotacion"] = false;
+                dr["TipoTarea"] = tipo.Text.ToString();
+                dt.Rows.Add(dr);
+                da.UpdateCommand = cb.GetUpdateCommand();
+                da.Update(ds, "TareasGenericas");
+                da.Update(dt);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('¡Tarea añadida ')", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('¡Tarea Repetida')", true);
+            }
+            
         }
     }
 }

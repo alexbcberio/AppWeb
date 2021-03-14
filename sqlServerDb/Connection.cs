@@ -202,5 +202,25 @@ namespace SqlServerDb
 
             return new SqlCommand(query, connection);
         }
+
+        public bool repeatedTarea(string codigo)
+        {
+
+            String sql = ("select codigo from TareasGenericas where codigo='"+ codigo + "';");
+            
+            SqlDataReader reader = ExecuteReader(sql);
+            bool repeat;
+            if (reader.Read())
+            {
+                repeat = reader["codigo"].ToString() == codigo;
+            }
+            else
+            {
+                repeat = false;
+            }
+
+            reader.Close();
+            return repeat;
+        }
     }
 }
