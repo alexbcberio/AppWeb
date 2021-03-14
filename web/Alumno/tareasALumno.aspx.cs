@@ -24,9 +24,9 @@ namespace web.Alumno
 
         private void LoadSubjects()
         {
-            Student s = new Student();
+            Student s = new Student(sessionMail());
 
-            SqlCommand subjects = s.GetStudentSubjects(sessionMail());
+            SqlCommand subjects = s.GetStudentSubjects();
 
             SqlDataAdapter da = new SqlDataAdapter(subjects);
             DataSet ds = new DataSet();
@@ -40,14 +40,20 @@ namespace web.Alumno
 
         private void LoadSubjectTasks()
         {
-            Student s = new Student();
+            Student s = new Student(sessionMail());
 
-            SqlCommand tasks = s.GetStudentTasks(sessionMail(), codasig.SelectedValue);
+            SqlCommand tasks = s.GetStudentTasks(codasig.SelectedValue);
 
             SqlDataAdapter da = new SqlDataAdapter(tasks);
             DataSet ds = new DataSet();
+            da.Fill(ds, "TareasGenericas");
 
-            da.Fill(ds);
+            DataColumn[] pk = new DataColumn[1];
+            pk[0] = ds.Tables[0].Columns[0];
+            ds.Tables[0].PrimaryKey = pk;
+
+            Session.Add("subjectsDataAdapter", da);
+            Session.Add("subjectsDataSet", ds);
 
             tasksGrid.DataSource = ds;
             tasksGrid.DataBind();
