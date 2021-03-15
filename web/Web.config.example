@@ -38,5 +38,6 @@
   </system.codedom>
   <appSettings>
     <add key="ValidationSettings:UnobtrusiveValidationMode" value="None" />
+    <add key="ChartImageHandler" value="storage=memory;deleteAfterServicing=true;" />
   </appSettings>
 </configuration>
