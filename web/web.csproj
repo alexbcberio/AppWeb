@@ -77,6 +77,9 @@
     <Content Include="App_Data\HAS.xml" />
     <Content Include="App_Data\SEG.xml" />
     <Content Include="App_Data\VerTablaTareas.xsl" />
+    <Content Include="App_Data\VerTablatareascodigo.xsl" />
+    <Content Include="App_Data\VerTablatareasdescripcion.xsl" />
+    <Content Include="App_Data\VerTablatareashestimadas.xsl" />
     <Content Include="Logout.aspx" />
     <Content Include="Profesor\estadic.aspx" />
     <Content Include="Profesor\exportarTareas.aspx" />

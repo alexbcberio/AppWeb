@@ -30,23 +30,28 @@ namespace web.Profesor
             cb = new SqlCommandBuilder(daptareas);
             daptareas.Fill(dsttareas, "TareasGenericas");
             tbltareas = dsttareas.Tables["TareasGenericas"];
+            loadXmlfile();
+
         }
 
-        protected void codasig_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        protected void loadXmlfile() {
             if (File.Exists(Server.MapPath("../App_Data/" + codasig.SelectedValue + ".xml")))
             {
                 ErrorMsg.Text = "";
                 Xml1.Visible = true;
                 Xml1.DocumentSource = Server.MapPath("../App_Data/" + codasig.SelectedValue + ".xml");
-                Xml1.TransformSource = Server.MapPath("../App_Data/VerTablaTareas.xsl");
+                Xml1.TransformSource = Server.MapPath("../App_Data/VerTablatareashestimadas.xsl");
             }
             else
             {
                 ErrorMsg.Text = "No hay XML a mostrar for this";
                 Xml1.Visible = false;
             }
-
+        }
+        protected void codasig_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadXmlfile();
+            transformby();
         }
 
         protected void Insertar_Click(object sender, EventArgs e)
@@ -88,6 +93,14 @@ namespace web.Profesor
                 // Write error.
                 ErrorMsg.Text = "No hay XML para importar";
             }
+
+        }
+        protected void transformby() {
+            Xml1.TransformSource = Server.MapPath("../App_Data/VerTablatareas" + transformBy.SelectedValue + ".xsl");
+        }
+        protected void transformBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            transformby();
 
         }
     }

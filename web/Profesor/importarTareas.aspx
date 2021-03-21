@@ -10,6 +10,9 @@
             width: 1025px;
             height: 324px;
         }
+        .auto-style2 {
+            height: 77px;
+        }
     </style>
 </head>
 <body>
@@ -27,18 +30,30 @@
                 <tr>
                     <td>
                         Selecionar Asignatura<br />
-                        <asp:DropDownList ID="codasig" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="codigo" DataValueField="codigo" OnSelectedIndexChanged="codasig_SelectedIndexChanged"></asp:DropDownList>
+                        <asp:DropDownList ID="codasig" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="codigo" DataValueField="codigo" OnSelectedIndexChanged="codasig_SelectedIndexChanged">
+                            
+                        </asp:DropDownList>
+                        
                     </td>
                 </tr>
 
                 <tr>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlserver %>" 
+                    <td>  <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:sqlserver %>" 
                         SelectCommand="SELECT [Asignaturas].[codigo] FROM ([Asignaturas] INNER JOIN [GruposClase] ON [Asignaturas].[codigo]=[GruposClase].[codigoasig]) INNER JOIN [ProfesoresGrupo] ON [ProfesoresGrupo].[codigogrupo]=[GruposClase].[codigo] WHERE ([ProfesoresGrupo].[email] = @email)" ProviderName="<%$ ConnectionStrings:sqlserver.ProviderName %>">
                         <SelectParameters>
                             <asp:SessionParameter Name="email" SessionField="email" Type="String" />
                         </SelectParameters>
-                    </asp:SqlDataSource>
-        <asp:Xml ID="Xml1" runat="server" Visible="False"></asp:Xml>
+                    </asp:SqlDataSource></td>
+                    <td><asp:DropDownList ID="transformBy" runat="server"  AutoPostBack="True" OnSelectedIndexChanged="transformBy_SelectedIndexChanged">
+                        <asp:ListItem Value="codigo">codigo</asp:ListItem>
+                        <asp:ListItem Value="descripcion">descripcion</asp:ListItem>
+                        <asp:ListItem Value="hestimadas">Hestimadas</asp:ListItem>
+                        </asp:DropDownList>
+                         <asp:Xml ID="Xml1" runat="server" Visible="False"></asp:Xml>
+
+                    </td>
+                  
+                   
                 </tr>
                 <tr>
                     <td>
