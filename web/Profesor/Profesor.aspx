@@ -28,13 +28,19 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style2">&nbsp;</td>
+                
+                 <td class="auto-style2">
+                    <asp:HyperLink ID="HyperLink1" runat="server" BackColor="Yellow" BorderColor="#FF9999" BorderWidth="5px" NavigateUrl="~/Profesor/importarTareas.aspx">IMportar Tareas</asp:HyperLink> 
+                     </td>
+               
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style2">&nbsp;</td>
-                <td>&nbsp;</td>
+               
+                 <td>
+                    <asp:HyperLink ID="HyperLink2" runat="server" BackColor="Yellow" BorderColor="#FF9999" BorderWidth="5px" NavigateUrl="~/Profesor/exportarTareas.aspx">Exportar Tareas</asp:HyperLink></td>
+                 <td class="auto-style2">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
         </table>

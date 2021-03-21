@@ -73,8 +73,14 @@
   <ItemGroup>
     <Content Include="Alumno\Alumno.aspx" />
     <Content Include="Alumno\InstanciarTarea.aspx" />
+    <Content Include="App_Data\EDA1.xml" />
+    <Content Include="App_Data\HAS.xml" />
+    <Content Include="App_Data\SEG.xml" />
+    <Content Include="App_Data\VerTablaTareas.xsl" />
     <Content Include="Logout.aspx" />
     <Content Include="Profesor\estadic.aspx" />
+    <Content Include="Profesor\exportarTareas.aspx" />
+    <Content Include="Profesor\importarTareas.aspx" />
     <Content Include="Profesor\InsertarTareaGenerica.aspx" />
     <Content Include="Profesor\Profesor.aspx" />
     <Content Include="Alumno\TareasAlumno.aspx" />
@@ -115,6 +121,20 @@
     </Compile>
     <Compile Include="Profesor\estadic.aspx.designer.cs">
       <DependentUpon>estadic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\exportarTareas.aspx.cs">
+      <DependentUpon>exportarTareas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profesor\exportarTareas.aspx.designer.cs">
+      <DependentUpon>exportarTareas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\importarTareas.aspx.cs">
+      <DependentUpon>importarTareas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profesor\importarTareas.aspx.designer.cs">
+      <DependentUpon>importarTareas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profesor\InsertarTareaGenerica.aspx.cs">
       <DependentUpon>InsertarTareaGenerica.aspx</DependentUpon>
@@ -186,6 +206,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App_Data\tareas.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
