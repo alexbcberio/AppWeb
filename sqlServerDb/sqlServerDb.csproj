@@ -119,6 +119,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Teacher.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
