@@ -2,7 +2,7 @@
   <tarea codigo="ISO-Lab1">
     <descripcion>Laboratorio de SWING</descripcion>
     <hestimadas>12</hestimadas>
-    <explotacion>True</explotacion>
+    <explotacion>true</explotacion>
     <tipotarea>Laboratorio</tipotarea>
   </tarea>
 </tareas>

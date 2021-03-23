@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Data;
+using System.IO;
 using System.Xml;
+using Newtonsoft.Json;
 using SqlServerDb;
+using Formatting = Newtonsoft.Json.Formatting;
 
 namespace web.Profesor
 {
@@ -38,19 +41,27 @@ namespace web.Profesor
         protected void exportXml_Click(object sender, EventArgs e)
         {
             DataSet ds = getGenericTasks();
-            DataRowCollection tasks = ds.Tables[0].Rows;
+            DataTable tasks = ds.Tables[0];
 
-            // No hay tareas a exportar
-            if (tasks.Count == 0) {
-                statusLabel.Text = "No hay tareas para exportar";
-                statusLabel.Visible = true;
-                return;
-            }
+            int codIdx = tasks.Columns.IndexOf("codigo");
+            tasks.Columns[codIdx].ColumnMapping = MappingType.Attribute;
 
             string savePath = Server.MapPath("../App_Data/" + subjectsDropdown.SelectedValue + ".xml");
-            createTasksXml(tasks, savePath);
+            FileStream fileStream = new FileStream(savePath, FileMode.Create);
+            ds.WriteXml(fileStream);
 
             statusLabel.Text = $"Tareas exportadas en {subjectsDropdown.SelectedValue}.xml";
+            statusLabel.Visible = true;
+        }
+        protected void exportJson_Click(object sender, EventArgs e)
+        {
+            DataSet ds = getGenericTasks();
+
+            string savePathJson = Server.MapPath("../App_Data/" + subjectsDropdown.SelectedValue + ".json");
+            string json = JsonConvert.SerializeObject(ds, Formatting.Indented);
+            File.WriteAllText(savePathJson, json);
+
+            statusLabel.Text = $"Tareas exportadas en {subjectsDropdown.SelectedValue}.json";
             statusLabel.Visible = true;
         }
 
@@ -60,56 +71,22 @@ namespace web.Profesor
             {
                 genericTasks = t.GetGenericTasks(subjectsDropdown.SelectedValue);
             }
+            
+            DataTable tasks = genericTasks.Tables[0];
+
+            // No hay tareas a exportar
+            if (tasks.Rows.Count == 0)
+            {
+                statusLabel.Text = "No hay tareas para exportar";
+                statusLabel.Visible = true;
+            }
+
+            genericTasks.DataSetName = "tareas";
+            string dataSetName = genericTasks.DataSetName;
+            tasks.TableName = dataSetName.Substring(0, dataSetName.Length - 1);
 
             return genericTasks;
         }
 
-        private void createTasksXml(DataRowCollection tasks, string savePath)
-        {
-            XmlDocument xml = new XmlDocument();
-            XmlElement tasksElem = xml.CreateElement("tareas");
-            xml.AppendChild(tasksElem);
-
-            // iterate each row
-            foreach (DataRow task in tasks)
-            {
-                XmlElement taskElem = xml.CreateElement("tarea");
-
-                // iterate each row column
-                foreach (DataColumn col in task.Table.Columns)
-                {
-                    string name = col.ColumnName;
-                    XmlElement field = xml.CreateElement(name);
-
-                    // create the XML element
-                    switch (name)
-                    {
-                        case "codigo":
-                            taskElem.SetAttribute(name, task.Field<string>(name));
-                            field = null;
-                            break;
-                        case "descripcion":
-                        case "tipotarea":
-                            field.InnerText = task.Field<string>(name).ToString();
-                            break;
-                        case "hestimadas":
-                            field.InnerText = task.Field<int>(name).ToString();
-                            break;
-                        case "explotacion":
-                            field.InnerText = task.Field<bool>(name).ToString();
-                            break;
-                    }
-
-                    if (field != null)
-                    {
-                        taskElem.AppendChild(field);
-                    }
-                }
-
-                xml.DocumentElement.AppendChild(taskElem);
-            }
-
-            xml.Save(savePath);
-        }
     }
 }

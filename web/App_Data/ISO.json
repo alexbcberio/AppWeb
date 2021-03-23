@@ -1,0 +1,11 @@
+{
+  "tarea": [
+    {
+      "codigo": "ISO-Lab1",
+      "descripcion": "Laboratorio de SWING",
+      "hestimadas": 12,
+      "explotacion": true,
+      "tipotarea": "Laboratorio"
+    }
+  ]
+}

@@ -14,6 +14,8 @@
         </div>
         <br />
         <asp:Button ID="exportXml" runat="server" Text="Exportar XML" OnClick="exportXml_Click" />
+        &nbsp;
+        <asp:Button ID="exportJson" runat="server" OnClick="exportJson_Click" Text="Exportar JSON" />
         <br />
         <br />
         <asp:Label ID="statusLabel" runat="server" EnableViewState="False" Visible="False"></asp:Label>
