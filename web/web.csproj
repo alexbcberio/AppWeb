@@ -83,6 +83,7 @@
     <Content Include="Logout.aspx" />
     <Content Include="Profesor\estadic.aspx" />
     <Content Include="Profesor\exportarTareas.aspx" />
+    <Content Include="Profesor\imnporttareadataset.aspx" />
     <Content Include="Profesor\importarTareas.aspx" />
     <Content Include="Profesor\InsertarTareaGenerica.aspx" />
     <Content Include="Profesor\Profesor.aspx" />
@@ -131,6 +132,13 @@
     </Compile>
     <Compile Include="Profesor\exportarTareas.aspx.designer.cs">
       <DependentUpon>exportarTareas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\imnporttareadataset.aspx.cs">
+      <DependentUpon>imnporttareadataset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profesor\imnporttareadataset.aspx.designer.cs">
+      <DependentUpon>imnporttareadataset.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profesor\importarTareas.aspx.cs">
       <DependentUpon>importarTareas.aspx</DependentUpon>

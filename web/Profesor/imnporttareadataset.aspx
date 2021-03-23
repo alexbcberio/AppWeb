@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="importarTareas.aspx.cs" Inherits="web.Profesor.importarTareas" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="imnporttareadataset.aspx.cs" Inherits="web.Profesor.imnporttareadataset" %>
 
 <!DOCTYPE html>
 
@@ -41,11 +41,7 @@
                             <asp:SessionParameter Name="email" SessionField="email" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource></td>
-                    <td><asp:DropDownList ID="transformBy" runat="server"  AutoPostBack="True" OnSelectedIndexChanged="transformBy_SelectedIndexChanged">
-                        <asp:ListItem Value="codigo">codigo</asp:ListItem>
-                        <asp:ListItem Value="descripcion">descripcion</asp:ListItem>
-                        <asp:ListItem Value="hestimadas">Hestimadas</asp:ListItem>
-                        </asp:DropDownList>
+                    <td>
                          <asp:Xml ID="Xml1" runat="server" Visible="False"></asp:Xml>
 
                     </td>

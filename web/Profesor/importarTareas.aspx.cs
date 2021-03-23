@@ -14,10 +14,10 @@ namespace web.Profesor
 {
     public partial class importarTareas : System.Web.UI.Page
     {
-        XmlDocument xmld;
-        DataSet dsttareas;
-        SqlDataAdapter daptareas;
-        DataTable tbltareas;
+        private XmlDocument xmld;
+        private DataSet dtset;
+        private SqlDataAdapter dtadapter;
+        private DataTable dttable;
         private SqlCommandBuilder cb;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -25,11 +25,11 @@ namespace web.Profesor
 
 
             Connection con = new Connection();
-            dsttareas = new DataSet();
-            daptareas = con.getTareasGenericas();
-            cb = new SqlCommandBuilder(daptareas);
-            daptareas.Fill(dsttareas, "TareasGenericas");
-            tbltareas = dsttareas.Tables["TareasGenericas"];
+            dtset = new DataSet();
+            dtadapter = con.getTareasGenericas();
+            cb = new SqlCommandBuilder(dtadapter);
+            dtadapter.Fill(dtset, "TareasGenericas");
+            dttable = dtset.Tables["TareasGenericas"];
             loadXmlfile();
 
         }
@@ -63,28 +63,28 @@ namespace web.Profesor
                 xmld.Load(Server.MapPath("../App_Data/" + codasig.SelectedValue + ".xml"));
                 XmlNodeList Tareas;
                 Tareas = xmld.GetElementsByTagName("tarea");
-                tbltareas = dsttareas.Tables["TareasGenericas"];
+                dttable = dtset.Tables["TareasGenericas"];
                 //XmlNode tarea;
                 foreach (XmlNode tarea in Tareas)
                 {
                     Connection con = new Connection();
                     if (!con.repeatedTarea(tarea.Attributes["codigo"].Value.ToString()))
                     {
-                        DataRow r = tbltareas.NewRow();
+                        DataRow r = dttable.NewRow();
                         r["Codigo"] = tarea.Attributes["codigo"].Value.ToString();
                         r["Descripcion"] = tarea.ChildNodes[0].InnerText.ToString();
                         r["CodAsig"] = codasig.SelectedValue.ToString();
                         r["HEstimadas"] = int.Parse(tarea.ChildNodes[1].InnerText);
                         r["Explotacion"] = bool.Parse(tarea.ChildNodes[2].InnerText);
                         r["TipoTarea"] = tarea.ChildNodes[3].InnerText.ToString();
-                        tbltareas.Rows.Add(r);
+                        dttable.Rows.Add(r);
                     }
 
                 }
-                daptareas.UpdateCommand = cb.GetUpdateCommand();
-                daptareas.Update(dsttareas, "TareasGenericas");
-                daptareas.Update(tbltareas);
-                tbltareas.AcceptChanges();
+                dtadapter.UpdateCommand = cb.GetUpdateCommand();
+                dtadapter.Update(dtset, "TareasGenericas");
+                dtadapter.Update(dttable);
+                dttable.AcceptChanges();
                 ErrorMsg.Text = "Ok ho gaya bro";
 
             }
@@ -103,5 +103,7 @@ namespace web.Profesor
             transformby();
 
         }
+
+       
     }
 }

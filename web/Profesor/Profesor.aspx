@@ -31,6 +31,7 @@
                 
                  <td class="auto-style2">
                     <asp:HyperLink ID="HyperLink1" runat="server" BackColor="Yellow" BorderColor="#FF9999" BorderWidth="5px" NavigateUrl="~/Profesor/importarTareas.aspx">IMportar Tareas</asp:HyperLink> 
+                     <asp:HyperLink ID="HyperLink3" runat="server" BackColor="Yellow" BorderColor="#FF9999" BorderWidth="5px" NavigateUrl="~/Profesor/imnporttareadataset.aspx">IMportar Tareas VDataSet</asp:HyperLink>
                      </td>
                
                 <td>&nbsp;</td>
