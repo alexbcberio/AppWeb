@@ -48,6 +48,7 @@ namespace web.Profesor
 
             string savePath = Server.MapPath("../App_Data/" + subjectsDropdown.SelectedValue + ".xml");
             FileStream fileStream = new FileStream(savePath, FileMode.Create);
+            ds.Namespace = "http://ji.ehu.es/has";
             ds.WriteXml(fileStream);
 
             statusLabel.Text = $"Tareas exportadas en {subjectsDropdown.SelectedValue}.xml";

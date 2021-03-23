@@ -1,5 +1,5 @@
-<tareas>
-  <tarea codigo="ISO-Lab1">
+<tareas xmlns="has:http://ji.ehu.es/has">
+  <tarea codigo="ISO-Lab1" xmlns="http://ji.ehu.es/has">
     <descripcion>Laboratorio de SWING</descripcion>
     <hestimadas>12</hestimadas>
     <explotacion>true</explotacion>
