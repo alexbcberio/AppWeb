@@ -2,7 +2,9 @@
 using System.Data;
 using System.IO;
 using System.Xml;
+using Newtonsoft.Json;
 using SqlServerDb;
+using Formatting = Newtonsoft.Json.Formatting;
 
 namespace web.Profesor
 {
@@ -41,16 +43,6 @@ namespace web.Profesor
             DataSet ds = getGenericTasks();
             DataTable tasks = ds.Tables[0];
 
-            // No hay tareas a exportar
-            if (tasks.Rows.Count == 0) {
-                statusLabel.Text = "No hay tareas para exportar";
-                statusLabel.Visible = true;
-                return;
-            }
-
-            ds.DataSetName = "tareas";
-            tasks.TableName = ds.DataSetName.Substring(0, ds.DataSetName.Length - 1);
-
             int codIdx = tasks.Columns.IndexOf("codigo");
             tasks.Columns[codIdx].ColumnMapping = MappingType.Attribute;
 
@@ -61,6 +53,17 @@ namespace web.Profesor
             statusLabel.Text = $"Tareas exportadas en {subjectsDropdown.SelectedValue}.xml";
             statusLabel.Visible = true;
         }
+        protected void exportJson_Click(object sender, EventArgs e)
+        {
+            DataSet ds = getGenericTasks();
+
+            string savePathJson = Server.MapPath("../App_Data/" + subjectsDropdown.SelectedValue + ".json");
+            string json = JsonConvert.SerializeObject(ds, Formatting.Indented);
+            File.WriteAllText(savePathJson, json);
+
+            statusLabel.Text = $"Tareas exportadas en {subjectsDropdown.SelectedValue}.json";
+            statusLabel.Visible = true;
+        }
 
         private DataSet getGenericTasks()
         {
@@ -68,6 +71,19 @@ namespace web.Profesor
             {
                 genericTasks = t.GetGenericTasks(subjectsDropdown.SelectedValue);
             }
+            
+            DataTable tasks = genericTasks.Tables[0];
+
+            // No hay tareas a exportar
+            if (tasks.Rows.Count == 0)
+            {
+                statusLabel.Text = "No hay tareas para exportar";
+                statusLabel.Visible = true;
+            }
+
+            genericTasks.DataSetName = "tareas";
+            string dataSetName = genericTasks.DataSetName;
+            tasks.TableName = dataSetName.Substring(0, dataSetName.Length - 1);
 
             return genericTasks;
         }
