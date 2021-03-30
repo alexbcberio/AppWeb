@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web.UI;
 using SqlServerDb;
 
@@ -13,15 +15,11 @@ namespace web
                 string email = Request.Form.Get("email");
                 string name = Request.Form.Get("nombre");
                 string surnames = Request.Form.Get("apellidos");
-                string password = Request.Form.Get("password");
+                string password = hashPassword(Request.Form.Get("password"));
                 string rol = Request.Form.Get("rol").ToLower();
 
                 Random rnd = new Random();
                 int confirmNumber = rnd.Next(10^5, 2147483647);
-
-               // string sql = $"insert into usuarios" +
-               // $"(email, nombre, apellidos, numconfir, confirmado, tipo, pass) values" +
-               //    $"('{email}', '{name}', '{surnames}', {confirmNumber}, 0, '{rol}', '{password}');";
                 
                 Connection con = new Connection();
 
@@ -47,6 +45,21 @@ namespace web
                     Response.Redirect("Inicio.aspx");
                 }
             }
+        }
+        private string hashPassword(string pass)
+        {
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            md5.Initialize();
+
+            byte[] passHashByte = md5.ComputeHash(Encoding.UTF8.GetBytes(pass));
+            StringBuilder passHash = new StringBuilder();
+
+            for (int i = 0; i < passHashByte.Length; i++)
+            {
+                passHash.Append(passHashByte[i].ToString("x2"));
+            }
+
+            return passHash.ToString();
         }
     }
 }

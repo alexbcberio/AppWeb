@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Text;
 using SqlServerDb;
 
 namespace web
@@ -16,26 +18,19 @@ namespace web
         {
             bool success = false;
             Connection con = new Connection();
-            String tipo="";
-
-            //string sql = $"select pass from usuarios where email = '{userEmail.Text}';";
-            //SqlDataReader r = con.ExecuteReader(sql);
+            String tipo = "";
             SqlDataReader r = con.Login(userEmail.Text);
 
 
             if (r.Read())
             {
                 string pass = r.GetString(0);
-                r.Close();
                 tipo = con.getTipo(userEmail.Text);
 
-                success = pass == userpass.Text;
-
-
+                success = checkPassword(pass, userpass.Text);
             }
-            else { r.Close(); }
 
-            
+            r.Close();
             con.Close();
 
             if (success)
@@ -54,6 +49,22 @@ namespace web
                 loginInfo.Text = "Combinación de email y contraseña incorrecta.";
                 loginInfo.ForeColor = Color.Red;
             }
+        }
+
+        private bool checkPassword(string dbPass, string pass)
+        {
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            md5.Initialize();
+
+            byte[] passHashByte = md5.ComputeHash(Encoding.UTF8.GetBytes(pass));
+            StringBuilder passHash = new StringBuilder();
+
+            for (int i = 0; i < passHashByte.Length; i++)
+            {
+                passHash.Append(passHashByte[i].ToString("x2"));
+            }
+
+            return dbPass == passHash.ToString();
         }
 
     }
