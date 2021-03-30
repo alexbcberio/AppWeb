@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web.Security;
 using SqlServerDb;
 
 namespace web
@@ -18,29 +19,40 @@ namespace web
         {
             bool success = false;
             Connection con = new Connection();
-            String tipo = "";
-            SqlDataReader r = con.Login(userEmail.Text);
+            SqlDataReader dr = con.Login(userEmail.Text);
 
-
-            if (r.Read())
+            if (dr.Read())
             {
-                string pass = r.GetString(0);
-                tipo = con.getTipo(userEmail.Text);
+                string pass = dr.GetString(0);
 
                 success = checkPassword(pass, userpass.Text);
             }
 
-            r.Close();
+            dr.Close();
             con.Close();
 
             if (success)
             {
+                string userType = getUserType(userEmail.Text);
+                FormsAuthentication.RedirectFromLoginPage(userType, false);
+                string redirUrl = FormsAuthentication.GetRedirectUrl(userType, false);
+
                 Session.Add("logged", true);
                 Session.Add("email", userEmail.Text);
-                Session.Add("tipo", tipo);
+                Session.Add("tipo", userType);
 
-                if (tipo.Equals("Profesor")) { Response.Redirect("Profesor/Profesor.aspx"); }
-                else { Response.Redirect("Alumno/Alumno.aspx"); }
+                if (redirUrl == "/")
+                {
+                    switch(userType)
+                    {
+                        case "alumno":
+                            Response.Redirect("Alumno/Alumno.aspx");
+                            break;
+                        default:
+                            Response.Redirect("Profesor/Profesor.aspx");
+                            break;
+                    }
+                }
 
                 loginInfo.Text = "¡Sesión iniciada!";
                 loginInfo.ForeColor = Color.Green;
@@ -67,5 +79,30 @@ namespace web
             return dbPass == passHash.ToString();
         }
 
+        private string getUserType(string email)
+        {
+            string type = null;
+
+            switch(email)
+            {
+                case "vadillo@ehu.es":
+                    type = "vadillo";
+                    break;
+                case "admin@ehu.es":
+                    type = "admin";
+                    break;
+            }
+
+            if (type == null)
+            {
+                Connection con = new Connection();
+                
+                type = con.getTipo(email);
+
+                con.Close();
+            }
+
+            return type.ToLower();
+        }
     }
 }

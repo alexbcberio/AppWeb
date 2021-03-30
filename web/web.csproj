@@ -220,10 +220,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Alumno\Web.config" />
     <None Include="App_Data\tareas.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <Content Include="Profesor\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
