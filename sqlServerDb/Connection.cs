@@ -165,16 +165,21 @@ namespace SqlServerDb
         {
             //String sql = $"select tipo from Usuarios where email='" + email + "';";
 
-            String tipo = "";
-            SqlCommand com = new SqlCommand("getTipo",connection);
+            string tipo = "";
+
+            SqlConnection con = new SqlConnection(_connectionString);
+            con.Open();
+
+            SqlCommand com = new SqlCommand("getTipo", con);
             com.CommandType = CommandType.StoredProcedure;
-            com.Parameters.AddWithValue("email",new SqlParameter()).Value=email;
+            com.Parameters.AddWithValue("email",new SqlParameter()).Value = email;
             SqlDataReader r = com.ExecuteReader();
             if (r.Read()) {
                  tipo = r.GetString(0);
-                r.Close();
             }
-            
+
+            r.Close();
+            con.Close();
 
             return tipo;
 
