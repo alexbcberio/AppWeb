@@ -48,6 +48,9 @@ namespace web
                         case "alumno":
                             Response.Redirect("Alumno/Alumno.aspx");
                             break;
+                        case "admin":
+                            Response.Redirect("Profesor/adminView.aspx");
+                            break;
                         default:
                             Response.Redirect("Profesor/Profesor.aspx");
                             break;

@@ -84,6 +84,7 @@
     <Content Include="App_Data\VerTablatareasdescripcion.xsl" />
     <Content Include="App_Data\VerTablatareashestimadas.xsl" />
     <Content Include="Logout.aspx" />
+    <Content Include="Profesor\adminView.aspx" />
     <Content Include="Profesor\estadic.aspx" />
     <Content Include="Profesor\exportarTareas.aspx" />
     <Content Include="Profesor\imnporttareadataset.aspx" />
@@ -121,6 +122,13 @@
     </Compile>
     <Compile Include="Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\adminView.aspx.cs">
+      <DependentUpon>adminView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profesor\adminView.aspx.designer.cs">
+      <DependentUpon>adminView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profesor\estadic.aspx.cs">
       <DependentUpon>estadic.aspx</DependentUpon>

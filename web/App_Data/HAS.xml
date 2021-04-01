@@ -24,4 +24,10 @@
     <explotacion>true</explotacion>
     <tipotarea>Laboratorio</tipotarea>
   </tarea>
+  <tarea codigo="HAS20-7864Asad">
+    <descripcion>Laboratorio sobre XML</descripcion>
+    <hestimadas>12</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Laboratorio</tipotarea>
+  </tarea>
 </tareas>

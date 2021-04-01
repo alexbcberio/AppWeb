@@ -40,7 +40,7 @@ namespace web
 
                     string subject = "Confirmar cuenta";
 
-                    MailClient.sendMail(email, subject, body);
+                   // MailClient.sendMail(email, subject, body);
 
                     Response.Redirect("Inicio.aspx");
                 }
