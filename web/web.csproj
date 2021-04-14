@@ -226,6 +226,7 @@
     <Compile Include="CerrarSesion.aspx.designer.cs">
       <DependentUpon>CerrarSesion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UsersManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Alumno\Web.config" />

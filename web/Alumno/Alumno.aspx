@@ -28,7 +28,27 @@
                     </td>
                     <td class="auto-style2" rowspan="3"><span class="auto-style3">Gestión Web de Tareas-Dedicación</span><br class="auto-style3" />
                         <br class="auto-style3" />
-                        <span class="auto-style3">Alumnos</span></td>
+                        <span class="auto-style3">Alumnos<br />
+                        <br />
+                        <asp:ScriptManager ID="ScriptManager1" runat="server">
+                        </asp:ScriptManager>
+                        <asp:Timer ID="Timer1" runat="server" Interval="2000">
+                        </asp:Timer>
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+                                <asp:Label ID="otherLoggedLabel" runat="server" Text="Label"></asp:Label>
+                                &nbsp;<br />
+                                <asp:ListBox ID="otherAccounts" runat="server"></asp:ListBox>
+                                <br />
+                                <asp:Label ID="studentLoggedLabel" runat="server" Text="Label"></asp:Label>
+                                <br />
+                                <asp:ListBox ID="studentAccounts" runat="server"></asp:ListBox>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="Timer1" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                        </span></td>
                 </tr>
                 <tr>
                     <td class="auto-style1">

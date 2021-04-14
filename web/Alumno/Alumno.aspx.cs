@@ -11,7 +11,22 @@ namespace web.Alumno
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            UsersManager mgr = (UsersManager)Application.Get("userManager");
 
+            otherLoggedLabel.Text = $"Hay {mgr.countOthers()} profesores conectados";
+            studentLoggedLabel.Text = $"Hay {mgr.countStudents()} estudiantes conectados.";
+
+            otherAccounts.Items.Clear();
+            foreach (string user in mgr.getOthers())
+            {
+                otherAccounts.Items.Add(user);
+            }
+
+            studentAccounts.Items.Clear();
+            foreach (string user in mgr.getStudents())
+            {
+                studentAccounts.Items.Add(user);
+            }
         }
     }
 }

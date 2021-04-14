@@ -34,14 +34,34 @@
                      <asp:HyperLink ID="HyperLink3" runat="server" BackColor="Yellow" BorderColor="#FF9999" BorderWidth="5px" NavigateUrl="~/Profesor/imnporttareadataset.aspx">IMportar Tareas VDataSet</asp:HyperLink>
                      </td>
                
-                <td>&nbsp;</td>
+                <td>
+                    <asp:ScriptManager ID="ScriptManager1" runat="server">
+                    </asp:ScriptManager>
+                    <asp:Timer ID="Timer1" runat="server" Interval="2000">
+                    </asp:Timer>
+                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                
                  <td>
                     <asp:HyperLink ID="HyperLink2" runat="server" BackColor="Yellow" BorderColor="#FF9999" BorderWidth="5px" NavigateUrl="~/Profesor/exportarTareas.aspx">Exportar Tareas</asp:HyperLink></td>
-                 <td class="auto-style2">&nbsp;</td>
+                 <td class="auto-style2">
+                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                         <ContentTemplate>
+                             <asp:Label ID="otherLoggedLabel" runat="server" Text="Label"></asp:Label>
+                             &nbsp;<br />
+                             <asp:ListBox ID="otherAccounts" runat="server"></asp:ListBox>
+                             <br />
+                             <asp:Label ID="studentLoggedLabel" runat="server" Text="Label"></asp:Label>
+                             <br />
+                             <asp:ListBox ID="studentAccounts" runat="server"></asp:ListBox>
+                         </ContentTemplate>
+                         <Triggers>
+                             <asp:AsyncPostBackTrigger ControlID="Timer1" />
+                         </Triggers>
+                     </asp:UpdatePanel>
+                 </td>
                 <td>&nbsp;</td>
             </tr>
         </table>
