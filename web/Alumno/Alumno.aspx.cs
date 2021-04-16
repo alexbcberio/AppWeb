@@ -11,7 +11,7 @@ namespace web.Alumno
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            UsersManager mgr = (UsersManager)Application.Get("userManager");
+            UsersManager mgr = (UsersManager)Application.Get("usersManager");
 
             otherLoggedLabel.Text = $"Hay {mgr.countOthers()} profesores conectados";
             studentLoggedLabel.Text = $"Hay {mgr.countStudents()} estudiantes conectados.";

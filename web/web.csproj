@@ -235,6 +235,8 @@
     </None>
     <None Include="packages.config" />
     <Content Include="Profesor\Web.config" />
+    <None Include="Properties\PublishProfiles\has21-16 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\has21-16 - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -253,7 +255,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.1</Version>
+      <Version>9.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup>

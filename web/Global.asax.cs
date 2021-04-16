@@ -12,20 +12,30 @@ namespace web
             Application.Set("connectionString", ConfigurationManager.ConnectionStrings["sqlServer"].ConnectionString);
             Connection.ConnectionString = (string) Application.Get("connectionString");
 
-            Application.Set("userManager", new UsersManager());
+            Application.Set("usersManager", new UsersManager());
         }
 
-        //protected void Session_Start(object sender, EventArgs e)
+        // protected void Session_Start(object sender, EventArgs e)
         protected void Application_PostAcquireRequestState(object sender, EventArgs e)
         {
-            if (Session["tipo"] == null)
+            try
             {
+                if (
+                    Session["tipo"] == null ||
+                    Session["email"] == null ||
+                    Session["tipo"] == null
+                ) {
+                    return;
+                }
+            } catch (Exception ex) {
                 return;
             }
 
-            UsersManager usrsMgr = (UsersManager) Application.Get("userManager");
-            string email = (string) Session["email"];
-            string userType = (string) Session["tipo"];
+            Application.Lock();
+
+            UsersManager usrsMgr = Application.Get("usersManager") as UsersManager;
+            string email = Session["email"] as string;
+            string userType = Session["tipo"] as string;
 
             if (userType == "alumno")
             {
@@ -34,18 +44,25 @@ namespace web
                 usrsMgr.addOther(email);
             }
 
-            Application.Set("userManager", usrsMgr);
+            Application.Set("usersManager", usrsMgr);
+
+            Application.UnLock();
         }
         protected void Session_End(object sender, EventArgs e)
         {
-            if (Session["tipo"] == null)
-            {
+            if (
+                Session["tipo"] == null ||
+                Session["email"] == null ||
+                Session["tipo"] == null
+            ) {
                 return;
             }
+            
+            Application.Lock();
 
-            UsersManager usrsMgr = (UsersManager)Application.Get("userManager");
-            string email = (string)Session["email"];
-            string userType = (string)Session["tipo"];
+            UsersManager usrsMgr = Application.Get("usersManager") as UsersManager;
+            string email = Session["email"] as string;
+            string userType = Session["tipo"] as string;
 
             if (userType == "alumno")
             {
@@ -56,7 +73,9 @@ namespace web
                 usrsMgr.removeOther(email);
             }
 
-            Application.Set("userManager", usrsMgr);
+            Application.Set("usersManager", usrsMgr);
+
+            Application.UnLock();
         }
 
         protected void Application_End(object sender, EventArgs e)
