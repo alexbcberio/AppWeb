@@ -227,5 +227,21 @@ namespace SqlServerDb
             reader.Close();
             return repeat;
         }
+        public String HorasMedia(string asignatura)
+        {
+            String sql = "SELECT AVG(HReales) Hreals FROM EstudiantesTareas inner join TareasGenericas ON EstudiantesTareas.CodTarea = TareasGenericas.Codigo WHERE (TareasGenericas.CodAsig='" + asignatura + "')";
+
+            //String sql = ("SELECT AVG(HReales) Hreals FROM EstudiantesTareas inner join TareasGenericas ON EstudiantesTareas.CodTarea = TareasGenericas.Codigo WHERE TareasGenericas.CodAsig='" + asignatura + "';");
+
+            SqlDataReader reader = ExecuteReader(sql);
+            String val = "0";
+            if (reader.Read())
+            {
+                val = reader["Hreals"].ToString();
+            }
+
+            reader.Close();
+            return val;
+        }
     }
 }

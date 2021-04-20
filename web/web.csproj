@@ -83,6 +83,7 @@
     <Content Include="App_Data\VerTablatareascodigo.xsl" />
     <Content Include="App_Data\VerTablatareasdescripcion.xsl" />
     <Content Include="App_Data\VerTablatareashestimadas.xsl" />
+    <Content Include="Profesor\coordinador.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="Profesor\adminView.aspx" />
     <Content Include="Profesor\estadic.aspx" />
@@ -94,12 +95,14 @@
     <Content Include="Alumno\TareasAlumno.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Profesor\TareasProfe.aspx" />
+    <None Include="Web References\horasmedias\horasMedia.disco" />
     <Content Include="Web.config" />
     <Content Include="Inicio.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="CambiarPassword.aspx" />
     <Content Include="Confirmar.aspx" />
     <Content Include="CerrarSesion.aspx" />
+    <Content Include="horasMedia.asmx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alumno\Alumno.aspx.cs">
@@ -115,6 +118,13 @@
     </Compile>
     <Compile Include="Alumno\InstanciarTarea.aspx.designer.cs">
       <DependentUpon>InstanciarTarea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\coordinador.aspx.cs">
+      <DependentUpon>coordinador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profesor\coordinador.aspx.designer.cs">
+      <DependentUpon>coordinador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Logout.aspx.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
@@ -198,6 +208,11 @@
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Registro.aspx.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -227,6 +242,20 @@
       <DependentUpon>CerrarSesion.aspx</DependentUpon>
     </Compile>
     <Compile Include="UsersManager.cs" />
+    <Compile Include="Web References\es.ehusw\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="horasMedia.asmx.cs">
+      <DependentUpon>horasMedia.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Web References\horasmedias\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Alumno\Web.config" />
@@ -237,6 +266,20 @@
     <Content Include="Profesor\Web.config" />
     <None Include="Properties\PublishProfiles\has21-16 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\has21-16 - Web Deploy.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\es.ehusw\comprobarmatricula.wsdl" />
+    <Content Include="Web References\es.ehusw\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\horasmedias\horasMedia.wsdl" />
+    <Content Include="Web References\horasmedias\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -257,6 +300,33 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>9.0.1</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:4854/horasMedia.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\horasmedias\</RelPath>
+      <UpdateFromURL>http://localhost:4854/horasMedia.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>web_horasmedias_WebService1</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://ehusw.es/jav/ServiciosWeb/comprobarmatricula.php%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\es.ehusw\</RelPath>
+      <UpdateFromURL>https://ehusw.es/jav/ServiciosWeb/comprobarmatricula.php%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>web_es_ehusw_Matriculas</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

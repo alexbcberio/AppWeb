@@ -45,7 +45,9 @@
             <tr>
                
                  <td>
-                    <asp:HyperLink ID="HyperLink2" runat="server" BackColor="Yellow" BorderColor="#FF9999" BorderWidth="5px" NavigateUrl="~/Profesor/exportarTareas.aspx">Exportar Tareas</asp:HyperLink></td>
+                    <asp:HyperLink ID="HyperLink2" runat="server" BackColor="Yellow" BorderColor="#FF9999" BorderWidth="5px" NavigateUrl="~/Profesor/exportarTareas.aspx">Exportar Tareas</asp:HyperLink>
+                     <br />
+                    <asp:HyperLink ID="HyperLink4" runat="server" BackColor="Yellow" BorderColor="#FF9999" BorderWidth="5px" NavigateUrl="~/Profesor/coordinador.aspx">Coordinador</asp:HyperLink></td>
                  <td class="auto-style2">
                      <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                          <ContentTemplate>

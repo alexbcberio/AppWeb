@@ -9,7 +9,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
+
             <table>
+                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                 <tr>
                     <td><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">REGISTRO DE USUARIOS</span></td>
                     <td>&nbsp;</td>
@@ -17,7 +19,19 @@
                 <tr>
                     <td>Email</td>
                     <td>
-                        <asp:TextBox ID="email" runat="server"></asp:TextBox>
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+                                <asp:TextBox ID="email" runat="server" AutoPostBack="True"></asp:TextBox>
+                                 <asp:Label runat="server" ID="emailval"></asp:Label>
+
+
+                                <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Button" />
+
+
+                            </ContentTemplate>
+
+                        </asp:UpdatePanel>
+                        
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="email" ErrorMessage="Campo Obligatorio*" ForeColor="Red" ValidationGroup="abc"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="email" ErrorMessage="Introduce un email válido" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="abc"></asp:RegularExpressionValidator>
                     </td>
