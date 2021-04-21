@@ -95,6 +95,7 @@
     <Content Include="Alumno\TareasAlumno.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Profesor\TareasProfe.aspx" />
+    <Content Include="passwordStrength.asmx" />
     <None Include="Web References\horasmedias\horasMedia.disco" />
     <Content Include="Web.config" />
     <Content Include="Inicio.aspx" />
@@ -255,6 +256,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="passwordStrength.asmx.cs">
+      <DependentUpon>passwordStrength.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
