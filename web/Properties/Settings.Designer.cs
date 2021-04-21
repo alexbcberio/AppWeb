@@ -52,5 +52,25 @@ namespace web.Properties {
                 return ((string)(this["web_passwordStrength_WebService2"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://has21-16.azurewebsites.net/horasMedia.asmx")]
+        public string web_deployedhorasmedias_WebService1 {
+            get {
+                return ((string)(this["web_deployedhorasmedias_WebService1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://passwordservice20210421193426.azurewebsites.net/passwordstrength.asmx")]
+        public string web_deployedpasswordstr_WebService1 {
+            get {
+                return ((string)(this["web_deployedpasswordstr_WebService1"]));
+            }
+        }
     }
 }

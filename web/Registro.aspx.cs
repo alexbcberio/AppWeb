@@ -35,7 +35,7 @@ namespace web
 
         protected void password_TextChanged(object sender, EventArgs e)
         {
-            passwordStrength.WebService2 serv = new passwordStrength.WebService2();
+            deployedpasswordstr.WebService1 serv = new deployedpasswordstr.WebService1();
             String passwordd = password.Text;
             int str = serv.passStrength(passwordd);
             if (str < 1)

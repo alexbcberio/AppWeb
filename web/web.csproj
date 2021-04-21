@@ -96,8 +96,21 @@
     <Content Include="Global.asax" />
     <Content Include="Profesor\TareasProfe.aspx" />
     <Content Include="passwordStrength.asmx" />
+    <None Include="Properties\PublishProfiles\hadsprooyecttest - Web Deploy.pubxml" />
+    <None Include="Web References\deployedhorasmedias\horasMedia.wsdl" />
+    <Content Include="Web References\deployedhorasmedias\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\deployedpasswordstr\passwordstrength.wsdl" />
+    <Content Include="Web References\deployedpasswordstr\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <None Include="Web References\horasmedias\horasMedia.disco" />
     <None Include="Web References\passwordStrength\passwordStrength.disco" />
+    <None Include="Web References\deployedhorasmedias\horasMedia.disco" />
+    <None Include="Web References\deployedpasswordstr\passwordstrength.disco" />
     <Content Include="Web.config" />
     <Content Include="Inicio.aspx" />
     <Content Include="Registro.aspx" />
@@ -244,6 +257,16 @@
       <DependentUpon>CerrarSesion.aspx</DependentUpon>
     </Compile>
     <Compile Include="UsersManager.cs" />
+    <Compile Include="Web References\deployedhorasmedias\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\deployedpasswordstr\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\es.ehusw\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -353,6 +376,28 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>web_es_ehusw_Matriculas</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://has21-16.azurewebsites.net/horasMedia.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\deployedhorasmedias\</RelPath>
+      <UpdateFromURL>https://has21-16.azurewebsites.net/horasMedia.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>web_deployedhorasmedias_WebService1</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://passwordservice20210421193426.azurewebsites.net/passwordstrength.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\deployedpasswordstr\</RelPath>
+      <UpdateFromURL>https://passwordservice20210421193426.azurewebsites.net/passwordstrength.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>web_deployedpasswordstr_WebService1</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>

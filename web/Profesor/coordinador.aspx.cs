@@ -16,7 +16,7 @@ namespace web
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            horasmedias.WebService1 serv = new horasmedias.WebService1();
+            deployedhorasmedias.WebService1 serv = new deployedhorasmedias.WebService1();
 
             Label4.Text = "Horas medias estimadas por los alumnos: " + serv.getHorasMedia(DropDownList1.Text.ToString());
 
