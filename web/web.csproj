@@ -97,6 +97,7 @@
     <Content Include="Profesor\TareasProfe.aspx" />
     <Content Include="passwordStrength.asmx" />
     <None Include="Web References\horasmedias\horasMedia.disco" />
+    <None Include="Web References\passwordStrength\passwordStrength.disco" />
     <Content Include="Web.config" />
     <Content Include="Inicio.aspx" />
     <Content Include="Registro.aspx" />
@@ -261,6 +262,11 @@
       <DependentUpon>passwordStrength.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Web References\passwordStrength\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Alumno\Web.config" />
@@ -282,6 +288,11 @@
     </Content>
     <None Include="Web References\horasmedias\horasMedia.wsdl" />
     <Content Include="Web References\horasmedias\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\passwordStrength\passwordStrength.wsdl" />
+    <Content Include="Web References\passwordStrength\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
@@ -320,6 +331,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>web_horasmedias_WebService1</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:4854/passwordStrength.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\passwordStrength\</RelPath>
+      <UpdateFromURL>http://localhost:4854/passwordStrength.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>web_passwordStrength_WebService2</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="https://ehusw.es/jav/ServiciosWeb/comprobarmatricula.php%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>

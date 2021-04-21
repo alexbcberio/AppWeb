@@ -25,6 +25,7 @@ namespace web
             Connection con = new Connection();
 
             String horamedias = con.HorasMedia(asignatura);
+            con.Close();
             return horamedias;
         }
     }

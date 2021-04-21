@@ -42,5 +42,15 @@ namespace web.Properties {
                 return ((string)(this["web_horasmedias_WebService1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:4854/passwordStrength.asmx")]
+        public string web_passwordStrength_WebService2 {
+            get {
+                return ((string)(this["web_passwordStrength_WebService2"]));
+            }
+        }
     }
 }

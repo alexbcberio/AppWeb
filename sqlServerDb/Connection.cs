@@ -241,6 +241,7 @@ namespace SqlServerDb
             }
 
             reader.Close();
+            
             return val;
         }
     }

@@ -19,18 +19,17 @@
                 <tr>
                     <td>Email</td>
                     <td>
-                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                         <asp:TextBox ID="email" runat="server" AutoPostBack="True" OnTextChanged="email_TextChanged1"></asp:TextBox>
+                         <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                             <ContentTemplate>
-                                <asp:TextBox ID="email" runat="server" AutoPostBack="True"></asp:TextBox>
-                                 <asp:Label runat="server" ID="emailval"></asp:Label>
-
-
-                                <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Button" />
-
-
+                                <asp:Label runat="server" ID="emailval"></asp:Label>
                             </ContentTemplate>
-
+                             <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="email" EventName="TextChanged" />
+                            </Triggers>
+                            
                         </asp:UpdatePanel>
+                      
                         
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="email" ErrorMessage="Campo Obligatorio*" ForeColor="Red" ValidationGroup="abc"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="email" ErrorMessage="Introduce un email válido" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="abc"></asp:RegularExpressionValidator>
@@ -53,7 +52,20 @@
                 <tr>
                     <td>Contraseña</td>
                     <td>
-                        <asp:TextBox ID="password" runat="server" TextMode="Password"></asp:TextBox>
+                   <asp:TextBox ID="password" runat="server" TextMode="Password" AutoPostBack="true" OnTextChanged="password_TextChanged"></asp:TextBox>
+
+                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                            <ContentTemplate>
+                                <asp:Label runat="server" ID="Label1"></asp:Label>
+                            </ContentTemplate>
+                             <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="password" EventName="TextChanged" />
+                            </Triggers>
+                            
+                        </asp:UpdatePanel>
+                       
+                       
+
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="password" ErrorMessage="Campo Obligatorio*" ForeColor="Red" ValidationGroup="abc"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
@@ -78,7 +90,16 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="Registrar" ValidationGroup="abc" Width="300px" />
+
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+                                <asp:Button ID="Button1" runat="server" Text="Registrar" ValidationGroup="abc" Width="300px" Enabled="False" OnClick="Button1_Click1" />
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="password" EventName="TextChanged" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                        
                     </td>
                 </tr>
             </table>

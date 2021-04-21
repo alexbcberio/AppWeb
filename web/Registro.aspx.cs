@@ -8,10 +8,16 @@ namespace web
 {
     public partial class WebForm2 : Page
     {
+
+        private string emaill;
+        private string name;
+        private String passwordd;
+        private string roll;
+        private string surnames;
         protected void Page_Load(object sender, EventArgs e)
         {
            
-           
+
         }
         private string hashPassword(string pass)
         {
@@ -29,19 +35,65 @@ namespace web
             return passHash.ToString();
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+
+
+
+        protected void password_TextChanged(object sender, EventArgs e)
+        {
+            passwordStrength.WebService2 serv = new passwordStrength.WebService2();
+            String passwordd = password.Text;
+            int str = serv.passStrength(passwordd);
+            if (str < 1)
+            {
+                Label1.ForeColor = System.Drawing.Color.Red;
+                Label1.Text = "Password is very Week Bro,And Strength is  = " + str;
+                Button1.Enabled = false;
+            }
+            else if (str < 3)
+            {
+                Label1.ForeColor = System.Drawing.Color.Red;
+                Label1.Text = "Password is Still Week Bro,And Strength is  = " + str;
+                Button1.Enabled = false;
+            }
+            else
+            {
+                Label1.ForeColor = System.Drawing.Color.Green;
+                Label1.Text = "Password is Good Bro,And Strength is  = " + str;
+                Button1.Enabled = true;
+            }
+
+        }
+
+        protected void email_TextChanged1(object sender, EventArgs e)
+        {
+            es.ehusw.Matriculas ser = new es.ehusw.Matriculas();
+            if (ser.comprobar(email.Text.ToString()) == "NO")
+            {
+                emailval.ForeColor = System.Drawing.Color.Red;
+                emailval.Text = "El email introducido no está matriculado.";
+                Button1.Enabled = false;
+            }
+            else
+            {
+                emailval.ForeColor = System.Drawing.Color.Green;
+                emailval.Text = "El email introducido está matriculado.";
+                Button1.Enabled = true;
+            }
+        }
+
+        protected void Button1_Click1(object sender, EventArgs e)
         {
             //string email = Request.Form.Get("email");
-            string emaill = email.Text;
+            emaill = email.Text;
 
             // string name = Request.Form.Get("nombre");
-            string name = nombre.Text;
+            name = nombre.Text;
             // string surnames = Request.Form.Get("apellidos");
-            string surnames = apellidos.Text;
+            surnames = apellidos.Text;
             //string password = hashPassword(Request.Form.Get("password"));
-            string passwordd = hashPassword(password.Text);
+            passwordd = hashPassword(password.Text);
             // string rol = Request.Form.Get("rol").ToLower();
-            string roll = rol.SelectedValue.ToLower();
+            roll = rol.SelectedValue.ToLower();
 
 
             Random rnd = new Random();
@@ -70,44 +122,7 @@ namespace web
 
                 Response.Redirect("Inicio.aspx");
             }
-
-            }
-
-        protected void email_TextChanged(object sender, EventArgs e)
-        {
-
-            es.ehusw.Matriculas ser = new es.ehusw.Matriculas();
-            if (ser.comprobar(email.Text.ToString()) == "NO")
-            {
-                emailval.ForeColor = System.Drawing.Color.Red;
-                emailval.Text = "El email introducido no está matriculado.";
-                Button1.Enabled = false;
-            }
-            else
-            {
-                emailval.ForeColor = System.Drawing.Color.Green;
-                emailval.Text = "El email introducido está matriculado.";
-                Button1.Enabled = true;
-            }
-        }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-
-            es.ehusw.Matriculas ser = new es.ehusw.Matriculas();
-            if (ser.comprobar(email.Text.ToString()) == "NO")
-            {
-                emailval.ForeColor = System.Drawing.Color.Red;
-                emailval.Text = "El email introducido no está matriculado.";
-                Button1.Enabled = false;
-            }
-            else
-            {
-                emailval.ForeColor = System.Drawing.Color.Green;
-                emailval.Text = "El email introducido está matriculado.";
-                Button1.Enabled = true;
-            }
-
         }
     }
+    
 }

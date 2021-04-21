@@ -14,15 +14,14 @@ namespace web
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
-    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
-    // [System.Web.Script.Services.ScriptService]
+     [System.Web.Script.Services.ScriptService]
     public class WebService2 : System.Web.Services.WebService
     {
 
         [WebMethod]
         public int passStrength(string password)
         {
-            int strength = 1;
+            int strength = 0;
 
             if (password.Length < 1)
                 return 0;
