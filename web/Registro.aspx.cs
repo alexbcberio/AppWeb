@@ -9,11 +9,6 @@ namespace web
     public partial class WebForm2 : Page
     {
 
-        private string emaill;
-        private string name;
-        private String passwordd;
-        private string roll;
-        private string surnames;
         protected void Page_Load(object sender, EventArgs e)
         {
            
@@ -83,25 +78,18 @@ namespace web
 
         protected void Button1_Click1(object sender, EventArgs e)
         {
-            //string email = Request.Form.Get("email");
-            emaill = email.Text;
-
-            // string name = Request.Form.Get("nombre");
-            name = nombre.Text;
-            // string surnames = Request.Form.Get("apellidos");
-            surnames = apellidos.Text;
-            //string password = hashPassword(Request.Form.Get("password"));
-            passwordd = hashPassword(password.Text);
-            // string rol = Request.Form.Get("rol").ToLower();
-            roll = rol.SelectedValue.ToLower();
-
+            string emailVal = email.Text;
+            string nameVal = nombre.Text;
+            string surnamesVal = apellidos.Text;
+            string passwordVal = hashPassword(password.Text);
+            string rolVal = rol.SelectedValue.ToLower();
 
             Random rnd = new Random();
             int confirmNumber = rnd.Next(10 ^ 5, 2147483647);
 
             Connection con = new Connection();
 
-            int res = con.Register(emaill, name, surnames, confirmNumber, roll, passwordd);
+            int res = con.Register(emailVal, nameVal, surnamesVal, confirmNumber, rolVal, passwordVal);
 
             con.Close();
 
@@ -111,14 +99,14 @@ namespace web
                 string server = Request.ServerVariables["SERVER_NAME"];
                 string port = Request.ServerVariables["SERVER_PORT"];
 
-                string url = $"{protocol}://{server}:{port}/Confirmar.aspx?email={email}&confirmationCode={confirmNumber}&method=email";
+                string url = $"{protocol}://{server}:{port}/Confirmar.aspx?email={emailVal}&confirmationCode={confirmNumber}&method=email";
                 string body = $"<h1>Gracias por registrarte</h1><p>Pulsa <a href='{url}'>aquí</a> para activar tu cuenta.</p>" +
                     $"<p>¿Prefieres copiar el enlace a mano? Aquí lo tienes <a href='{url}'>{url}</a></p><hr>" +
                     $"<p style='text-align:center;font-size:.75rem;'>Este mensaje se ha enviado de forma automática</p>";
 
                 string subject = "Confirmar cuenta";
 
-                // MailClient.sendMail(email, subject, body);
+                MailClient.sendMail(emailVal, subject, body);
 
                 Response.Redirect("Inicio.aspx");
             }
